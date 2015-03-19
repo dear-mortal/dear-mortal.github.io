@@ -7,8 +7,8 @@ var wave_income = 	[	13,	15,	17,	18,	20,	22,	23,	25,	27,	28,		30,	32,	33,	35,	37
 var creep_income = 	[	3,	4,	4,	5,	5,	5,	6,	6,	6,	81,		6,	5,	7,	12,	9,	8,	9,	8,	10,	126,	10,	13,	15,	17,	81,	19,	21,	26,	27,	200	];
 var num_creeps =	[	12,	15,	15,	12,	12,	12,	10,	12,	15,	1,		18,	15,	15,	8,	12,	15,	12,	15,	12,	1,		12,	16,	12,	12,	4,	12,	12,	8,	10,	1	];
 
-function getIncome(wave_num, current_mins, current_income, expected_leaks) {
-	return current_mins + current_income + wave_income[wave_num] + creep_income[wave_num] * (num_creeps[wave_num] - expected_leaks);
+function getIncome(wave_num, current_mins, current_income, expected_leaks, expected_sends) {
+	return current_mins + current_income + wave_income[wave_num] + creep_income[wave_num] * (num_creeps[wave_num] - expected_leaks) + expected_sends;
 }
 
 function updateIncome() {
@@ -17,10 +17,11 @@ function updateIncome() {
 	var currentMinerals = parseInt(document.getElementById('txtCurrentMins').value) || 0;
 	var currentIncome = parseInt(document.getElementById('txtIncome').value) || 0;
 	var expectedLeaks = parseInt(document.getElementById('txtExpected').value) || 0;
+	var expectedSends = parseInt(document.getElementById('txtSends').value) || 0;
 
-	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks);
-	var expected2 =  getIncome(currentWave, expected, currentIncome, 0);
-	var expected3 = getIncome(currentWave + 1, expected2, currentIncome, 0);
+	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks, expectedSends);
+	var expected2 =  getIncome(currentWave, expected, currentIncome, 0, 0);
+	var expected3 = getIncome(currentWave + 1, expected2, currentIncome, 0, 0);
 
 	
 	if (currentWave >= 1 && currentWave <= 30) document.getElementById("waveName").innerHTML = wave_names[currentWave - 1];
@@ -46,10 +47,10 @@ function updateIncome() {
 
 function initialize() {
 	document.getElementById('txtWaveNumber').value = 1;
-
 	document.getElementById('txtCurrentMins').value = 100;
 	document.getElementById('txtIncome').value = 0;
 	document.getElementById('txtExpected').value = 0;
+	document.getElementById('txtSends').value = 0;
 	
 	updateIncome();
 }
