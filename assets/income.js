@@ -16,11 +16,8 @@ function updateIncome() {
 	var currentMinerals = parseInt(document.getElementById('txtCurrentMins').value);
 	var currentWave = parseInt(document.getElementById('txtWaveNumber').value);
 	var currentIncome = parseInt(document.getElementById('txtIncome').value);
-	var expectedLeaks = parseInt(document.getElementById('txtExpected').value);
-	
-	if (expectedLeaks == NaN)
-		expectedLeaks = 0;
-	
+	var expectedLeaks = parseInt(document.getElementById('txtExpected').value) || 0;
+
 	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks);
 	
 	document.getElementById("waveName").innerHTML = wave_names[currentWave - 1];
