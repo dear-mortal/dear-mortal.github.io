@@ -19,6 +19,9 @@ function updateIncome() {
 	var expectedLeaks = parseInt(document.getElementById('txtExpected').value) || 0;
 
 	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks);
+	var expected2 =  getIncome(currentWave, expected, currentIncome, expectedLeaks);
+	var expected3 = getIncome(currentWave + 1, expected2, currentIncome, expectedLeaks);
+
 	
 	if (currentWave >= 1 && currentWave <= 30) document.getElementById("waveName").innerHTML = wave_names[currentWave - 1];
 	else document.getElementById("waveName").innerHTML = "";
@@ -30,8 +33,12 @@ function updateIncome() {
 	else document.getElementById("loss").innerHTML = "";
 	
 	if (currentMinerals >= 0 && currentWave >= 1 && currentWave <= 30 && currentIncome >= 0) {
-	document.getElementById("info").innerHTML = "Expected minerals by " + wave_names[currentWave] + ": " + expected
-		+ "<br>Base income from this round is " + wave_income[currentWave];
+		document.getElementById("info").innerHTML = "Base income from this round is " + wave_income[currentWave] + " minerals<br>"
+		+ "<br>Expected minerals"
+		+ "<br><span class='tab'>" + wave_names[currentWave] + ": " + expected + "</span>"
+		+ "<br><span class='tab'>" + wave_names[currentWave + 1] + ": "  + expected2 + "</span>"
+		+ "<br><span class='tab'>" + wave_names[currentWave + 2] + ": "  + expected3 + "</span>"
+		+ "<br><br><i style='color: #B3B3B3'>Disclaimer: These estimates are based your current income, they will become more accurate as I implement more fields</i>";
 	}
 	
 	else document.getElementById("info").innerHTML = "";
