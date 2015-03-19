@@ -34,7 +34,7 @@ function updateIncome() {
 	
 	if (currentMinerals >= 0 && currentWave >= 1 && currentWave <= 30 && currentIncome >= 0) {
 		document.getElementById("info").innerHTML = "Base income from this round is " + wave_income[currentWave] + " minerals<br>"
-		+ "<br>Unspent minerals at the start of each round: "
+		+ "<br>Expected minerals"
 		+ "<br><span class='tab'>" + wave_names[currentWave] + ": " + expected + "</span>"
 		+ "<br><span class='tab'>" + wave_names[currentWave + 1] + ": "  + expected2 + "</span>"
 		+ "<br><span class='tab'>" + wave_names[currentWave + 2] + ": "  + expected3 + "</span>"
