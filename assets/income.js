@@ -13,9 +13,9 @@ function getIncome(wave_num, current_mins, current_income, expected_leaks) {
 
 function updateIncome() {
 	
-	var currentMinerals = parseInt(document.getElementById('txtCurrentMins').value);
-	var currentWave = parseInt(document.getElementById('txtWaveNumber').value);
-	var currentIncome = parseInt(document.getElementById('txtIncome').value);
+	var currentMinerals = parseInt(document.getElementById('txtCurrentMins').value) || 1;
+	var currentWave = parseInt(document.getElementById('txtWaveNumber').value) || 0;
+var currentIncome = parseInt(document.getElementById('txtIncome').value) || 0;
 	var expectedLeaks = parseInt(document.getElementById('txtExpected').value) || 0;
 
 	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks);
