@@ -38,8 +38,7 @@ function updateIncome() {
 		+ "<br>Minerals expected by"
 		+ "<br><span class='tab'>" + (wave_names[currentWave] || "Terratrons") + ": " + expected + "</span>"
 		+ "<br><span class='tab'>" + (wave_names[currentWave + 1] || "Terratrons")  + ": "  + expected2 + "</span>"
-		+ "<br><span class='tab'>" + (wave_names[currentWave + 2] || "Terratrons")  + ": "  + expected3 + "</span>"
-		+ "<br><br><i style='color: #B3B3B3'>Disclaimer: These estimates are based your current income, they will become more accurate as I implement more fields.</i>";
+		+ "<br><span class='tab'>" + (wave_names[currentWave + 2] || "Terratrons")  + ": "  + expected3 + "</span>";
 	}
 	
 	else document.getElementById("info").innerHTML = "";

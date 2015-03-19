@@ -40,6 +40,20 @@ body {
 	padding: 4px;
 }
 
+#disclaimer {
+	font-size: 12px;
+	margin: 8px 4px;
+	padding: 6px 10px;
+	color: #b3b3b3;
+	border-radius: 5px;
+}
+
+#disclaimer:hover {
+	color:white;
+	background-color: #01233D;
+	
+}
+
 .tab {
 	margin-left: 20px;
 }
