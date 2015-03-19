@@ -1,5 +1,5 @@
 
-var wave_names =	[	"Zerglings",	"Lava Crawlers",	"Space Cows",	"Marines",			"Hoverlords",	"Roaches",	"Zealots",		"Reapers",		"Exotics",	"Infestor",
+var wave_names =	[	"Zerglings",	"Lava Crawlers",	"Space Cows",	"Marines",			"Hoverlords",	"Roaches",	"Zealots",		"Reapers",		"Exotics",	"The Infestor",
 						"Scantipedes",	"Hydralisks",		"Brood Lords",	"Immortals",		"Lurkers",		"Hellions",	"Marauders",	"Corruptors",	"Lyotes",	"Fatty",
 						"Feederlings",	"Abberations",		"A.R.E.S.",		"High Templars",	"Hybrids",		"Kerrigan",	"Predators",	"Preservers",	"Zukars",	"Brutalisk"	];
 						
@@ -12,20 +12,26 @@ function getIncome(wave_num, current_mins, current_income, expected_leaks) {
 }
 
 function updateIncome() {
-	document.getElementById("expectedMinerals").innerHTML = "";
 	
 	var currentMinerals = parseInt(document.getElementById('txtCurrentMins').value);
 	var currentWave = parseInt(document.getElementById('txtWaveNumber').value);
 	var currentIncome = parseInt(document.getElementById('txtIncome').value);
 	var expectedLeaks = parseInt(document.getElementById('txtExpected').value);
 	
-	
 	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks);
 	
 	document.getElementById("waveName").innerHTML = wave_names[currentWave - 1];
-	document.getElementById("info").innerHTML = "Expected minerals wave " + (currentWave + 1) + " (" + wave_names[currentWave] + "): " + expected;
 	
-	document.getElementById("echo").innerHTML = "Base income from this round is " + wave_income[currentWave];
+	if (expectedLeaks > 0 && expectedLeaks <= num_creeps[currentWave - 1]) {
+		document.getElementById("loss").innerHTML = expectedLeaks * creep_income[currentWave - 1] + " minerals lost";
+	}
+	
+	else {
+		document.getElementById("loss").innerHTML = "";		
+	}
+	
+	document.getElementById("info").innerHTML = "Expected minerals by " + wave_names[currentWave] + ": " + expected
+	+ "<br>Base income from this round is " + wave_income[currentWave];
 }
 
 function initialize() {
