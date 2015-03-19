@@ -30,6 +30,11 @@ body {
 	padding-left: 40px;
 }
 
+#heading {
+	background-color: #F3F3F3;
+	border-radius: 5px;
+}
+
 label, input {
 	display: inline-block;
 	margin-bottom: 6px;
