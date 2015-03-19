@@ -1,7 +1,22 @@
 <head>
 <title>Squadron Income Calculator</title>
+<script src="assets/income.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/main.css">
 </head>
 
-<body>
-Welcome!
+<body onload="initialize()">
+<div id="container">
+<div id="header">Squadron Tower Defense</div>
+<div id="subhead">Income Calculator</div>
+<br>
+<form>
+<label>Current Wave</label><input type="text" id="txtWaveNumber" name="wavenum" onkeyup="updateIncome()"><span id="waveName"></span><br>
+<label>Current Minerals</label><input type="text" id="txtCurrentMins" name="currmin" onkeyup="updateIncome()"><br>
+<label>Current Income</label><input type="text" id="txtIncome" onkeyup="updateIncome()"><br>
+<label>Expected Leaks</label><input type="text" id="txtExpected" onkeyup="updateIncome()"><br>
+</form>
+<div id="info"></div>
+<div id="echo"></div>
+<br>
+</div>
 </body>
