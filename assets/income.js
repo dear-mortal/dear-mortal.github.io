@@ -15,23 +15,26 @@ function updateIncome() {
 	
 	var currentMinerals = parseInt(document.getElementById('txtCurrentMins').value) || 1;
 	var currentWave = parseInt(document.getElementById('txtWaveNumber').value) || 0;
-var currentIncome = parseInt(document.getElementById('txtIncome').value) || 0;
+	var currentIncome = parseInt(document.getElementById('txtIncome').value) || 0;
 	var expectedLeaks = parseInt(document.getElementById('txtExpected').value) || 0;
 
 	var expected = getIncome(currentWave - 1, currentMinerals, currentIncome, expectedLeaks);
 	
-	document.getElementById("waveName").innerHTML = wave_names[currentWave - 1];
+	if (currentWave >= 1 && currentWave <= 30) document.getElementById("waveName").innerHTML = wave_names[currentWave - 1];
+	else document.getElementById("waveName").innerHTML = "";
 	
 	if (expectedLeaks > 0 && expectedLeaks <= num_creeps[currentWave - 1]) {
 		document.getElementById("loss").innerHTML = expectedLeaks * creep_income[currentWave - 1] + " minerals lost";
 	}
 	
-	else {
-		document.getElementById("loss").innerHTML = "";		
+	else document.getElementById("loss").innerHTML = "";
+	
+	if (currentMinerals >= 0 && currentWave >= 1 && currentWave <= 30 && currentIncome >= 0) {
+	document.getElementById("info").innerHTML = "Expected minerals by " + wave_names[currentWave] + ": " + expected
+		+ "<br>Base income from this round is " + wave_income[currentWave];
 	}
 	
-	document.getElementById("info").innerHTML = "Expected minerals by " + wave_names[currentWave] + ": " + expected
-	+ "<br>Base income from this round is " + wave_income[currentWave];
+	else document.getElementById("info").innerHTML = "";
 }
 
 function initialize() {
